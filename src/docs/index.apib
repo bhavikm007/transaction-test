@@ -1,0 +1,201 @@
+FORMAT: 1A
+HOST: https://localhost:5000
+
+# Transaction Test APIs
+
+### Get Transactions [GET /get-user-transaction/{id}]
+Get a list of notes.
+
++ Parameters
+
+    + id: 1 (required, number) - user ID
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                {
+                    "data": [
+                        {
+                            "_id": "6069e3a22e1de8299ca2640d",
+                            "userId": 1,
+                            "name": "Bhavik",
+                            "transactionType": "CREDIT",
+                            "previouseCredit": 0,
+                            "transactionValue": 200,
+                            "newCredit": 200,
+                            "created_at": "2021-04-04T16:04:50.474Z",
+                            "updated_at": "2021-04-04T16:04:50.474Z",
+                            "__v": 0
+                        },
+                        {
+                            "_id": "6069e4328faebf08805fe530",
+                            "userId": 1,
+                            "name": "Bhavik",
+                            "transactionType": "CREDIT",
+                            "previouseCredit": 0,
+                            "transactionValue": 200,
+                            "newCredit": 200,
+                            "created_at": "2021-04-04T16:07:14.515Z",
+                            "updated_at": "2021-04-04T16:07:14.515Z",
+                            "__v": 0
+                        },
+                        {
+                            "_id": "6069e4675e57992be4d2db36",
+                            "userId": 1,
+                            "name": "Bhavik",
+                            "transactionType": "CREDIT",
+                            "previouseCredit": 0,
+                            "transactionValue": 200,
+                            "newCredit": 200,
+                            "created_at": "2021-04-04T16:08:07.626Z",
+                            "updated_at": "2021-04-04T16:08:07.626Z",
+                            "__v": 0
+                        },
+                        {
+                            "_id": "6069e47b2b36861c28f9d4b2",
+                            "userId": 1,
+                            "name": "Bhavik",
+                            "transactionType": "CREDIT",
+                            "previouseCredit": 200,
+                            "transactionValue": 200,
+                            "newCredit": 400,
+                            "created_at": "2021-04-04T16:08:27.248Z",
+                            "updated_at": "2021-04-04T16:08:27.248Z",
+                            "__v": 0
+                        },
+                        {
+                            "_id": "6069e4882b36861c28f9d4b3",
+                            "userId": 1,
+                            "name": "Bhavik",
+                            "transactionType": "DEBIT",
+                            "previouseCredit": 400,
+                            "transactionValue": 200,
+                            "newCredit": 200,
+                            "created_at": "2021-04-04T16:08:41.000Z",
+                            "updated_at": "2021-04-04T16:08:41.000Z",
+                            "__v": 0
+                        },
+                        {
+                            "_id": "6069e53d01fb2812c404b1d3",
+                            "userId": 1,
+                            "name": "Bhavik",
+                            "transactionType": "DEBIT",
+                            "previouseCredit": 200,
+                            "transactionValue": 200,
+                            "newCredit": 0,
+                            "created_at": "2021-04-04T16:11:41.410Z",
+                            "updated_at": "2021-04-04T16:11:41.410Z",
+                            "__v": 0
+                        },
+                        {
+                            "_id": "6069e54c01fb2812c404b1d4",
+                            "userId": 1,
+                            "name": "Bhavik",
+                            "transactionType": "CREDIT",
+                            "previouseCredit": 0,
+                            "transactionValue": 500,
+                            "newCredit": 500,
+                            "created_at": "2021-04-04T16:11:56.407Z",
+                            "updated_at": "2021-04-04T16:11:56.407Z",
+                            "__v": 0
+                        },
+                        {
+                            "_id": "606aae6d8e2ba406980496e6",
+                            "userId": 1,
+                            "name": "Bhavik",
+                            "transactionType": "CREDIT",
+                            "previouseCredit": 500,
+                            "transactionValue": 500,
+                            "newCredit": 1000,
+                            "created_at": "2021-04-05T06:30:05.520Z",
+                            "updatedAt": "2021-04-05T06:30:05.520Z",
+                            "__v": 0
+                        },
+                        {
+                            "_id": "606aafe1604c4c1ae4647450",
+                            "userId": 1,
+                            "name": "Bhavik",
+                            "transactionType": "DEBIT",
+                            "previouseCredit": 1000,
+                            "transactionValue": 1000,
+                            "newCredit": 0,
+                            "created_at": "2021-04-05T06:36:17.554Z",
+                            "updatedAt": "2021-04-05T06:36:17.554Z",
+                            "__v": 0
+                        }
+                    ],
+                    "hasError": false,
+                    "message": "",
+                    "totalCount": 0
+                }
+            }
+
+            {
+                "hasError": true,
+                "statusCode": 500,
+                "message": "Error while get user transaction."
+            }
+    
+
+### Create New Transaction [POST /api/create-user-transaction/{id}]
+
++ Parameters
+
+    + id: 1 (required, number) - user ID
+
++ Request with body (application/json)
+
+    + Body
+
+            {
+                "name": "Bhavik",
+                "type": "DEBIT",
+                "value": 1000
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": {
+                    "message": "Transaction completed successfully."
+                },
+                "hasError": false,
+                "message": "",
+                "totalCount": 0
+            }
+
+            {
+                "hasError": true,
+                "statusCode": 500,
+                "message": "Debit amount can not be greater than current balance."
+            }
+
+
+### Get user credit [GET /api/get-user-credit/{id}]
+
++ Parameters
+
+    + id: 1 (required, number) - user ID
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": {
+                    "availableCredit": 0
+                },
+                "hasError": false,
+                "message": "",
+                "totalCount": 0
+            }
+
+            {
+                "hasError": true,
+                "statusCode": 500,
+                "message": "Error while get user credit."
+            }
